@@ -396,7 +396,7 @@ Object.keys(eventMap).forEach(key => {
     } else if (typeof Event === 'function') {
       return new Event(eventName, eventInit)
     } else {
-      const event = node.ownerDocument.createEvent('Event')
+      const event = getWindowFromNode(node).document.createEvent('Event')
       event.initEvent(eventName, eventInit.bubbles, eventInit.cancelable)
       return event
     }
