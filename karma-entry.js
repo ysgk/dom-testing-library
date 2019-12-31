@@ -1,3 +1,5 @@
+import 'core-js/stable'
+
 const testsContext = require.context('./src/__tests__', true, /.*\.karma\.js?$/)
 
 testsContext.keys().forEach(testsContext)
