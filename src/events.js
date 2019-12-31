@@ -390,8 +390,16 @@ Object.keys(eventMap).forEach(key => {
     }
     Object.assign(node, targetProperties)
     const window = getWindowFromNode(node)
-    const EventConstructor = window[EventType] || window.Event
-    return new EventConstructor(eventName, eventInit)
+
+    if (window[EventType]) {
+      return new window[EventType](eventName, eventInit)
+    } else if (typeof Event === 'function') {
+      return new Event(eventName, eventInit)
+    } else {
+      const event = node.ownerDocument.createEvent('Event')
+      event.initEvent(eventName, true, true)
+      return event
+    }
   }
 
   fireEvent[key] = (node, init) => fireEvent(node, createEvent[key](node, init))
