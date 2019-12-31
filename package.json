@@ -25,6 +25,7 @@
   "scripts": {
     "build": "kcd-scripts build --ignore \"**/__tests__/**,**/__node_tests__/**,**/__mocks__/**\" && kcd-scripts build --bundle --no-clean",
     "karma:chrome": "karma start --single-run --browsers Chrome",
+    "karma:chrome_headless": "karma start --single-run --browsers ChromeHeadless",
     "karma:ie": "karma start --single-run --browsers ie_no_addons",
     "lint": "kcd-scripts lint",
     "test": "kcd-scripts test",
