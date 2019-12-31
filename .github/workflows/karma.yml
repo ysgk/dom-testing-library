@@ -1,0 +1,14 @@
+name: karma testing
+
+on: [push]
+
+jobs:
+  karma-ie:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - run: yarn install
+      - run: yarn test
