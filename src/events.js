@@ -391,17 +391,13 @@ Object.keys(eventMap).forEach(key => {
     Object.assign(node, targetProperties)
     const window = getWindowFromNode(node)
 
-    if (window[EventType]) {
-      console.log('A') // eslint-disable-line
-      console.log(EventType) // eslint-disable-line
+    if (typeof window[EventType] === 'function') {
       return new window[EventType](eventName, eventInit)
     } else if (typeof Event === 'function') {
-      console.log('B') // eslint-disable-line
       return new Event(eventName, eventInit)
     } else {
-      console.log('C') // eslint-disable-line
       const event = node.ownerDocument.createEvent('Event')
-      event.initEvent(eventName, true, true)
+      event.initEvent(eventName, eventInit.bubbles, eventInit.cancelable)
       return event
     }
   }
