@@ -301,7 +301,8 @@ it('assigns selection-related target properties', () => {
   expect(node.selectionEnd).toBe(selectionEnd)
 })
 
-it.skip('assigning a value to a target that cannot have a value throws an error', () => {
+// eslint-disable-next-line
+xit('assigning a value to a target that cannot have a value throws an error', () => {
   const node = document.createElement('div')
   expect(() =>
     fireEvent.change(node, {target: {value: 'a'}}),
