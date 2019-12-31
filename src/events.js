@@ -392,10 +392,16 @@ Object.keys(eventMap).forEach(key => {
     const window = getWindowFromNode(node)
 
     if (window[EventType]) {
+      // eslint-disable-next-line
+      console.log('A')
       return new window[EventType](eventName, eventInit)
     } else if (typeof Event === 'function') {
+      // eslint-disable-next-line
+      console.log('B')
       return new Event(eventName, eventInit)
     } else {
+      // eslint-disable-next-line
+      console.log('C')
       const event = node.ownerDocument.createEvent('Event')
       event.initEvent(eventName, true, true)
       return event
